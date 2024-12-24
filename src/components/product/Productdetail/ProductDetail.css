@@ -1,0 +1,308 @@
+/* Căn nội dung trang sang bên trái */
+.product-detail {
+  padding: 20px;
+  width: 100vw;
+  /* max-width: 800px; */
+  margin: 0 auto;
+}
+
+/* Căn chỉnh tiêu đề và hình ảnh sản phẩm */
+.product-detail h1 {
+  text-align: left;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.product-detail h2 {
+  text-align: left;
+  font-size: 24px;
+  
+  margin-bottom: 20px;
+}
+
+.product-detail img {
+  width: 60%;
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Khung chứa các comment */
+.comments {
+  width: 90%;
+  margin-top: 20px;
+  max-height: 400px; /* Đặt chiều cao cố định */
+  overflow-y: auto; /* Thêm thanh cuộn dọc nếu cần thiết */
+}
+
+.edit-input {
+  width: calc(100% - 20px) !important; /* Trừ đi padding của comment-box */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  box-sizing: border-box; /* Đảm bảo padding được tính vào chiều rộng */
+}
+
+.comment-box {
+  width: 100%;
+  position: relative;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.comment-box p {
+  margin: 0;
+  font-size: 16px;
+  white-space: pre-wrap;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.comment-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.comment-form button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.comment-form button:hover {
+  background-color: #45a049;
+}
+
+/* CommentHeader.css */
+.comment-header {
+  display: flex;
+  direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button-edit {
+  width: 40px;
+  background-color: #1e90ff;
+  background: #1e90ff;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 0;
+}
+
+.button-edit:hover {
+  color: #010911;
+  text-decoration: underline;
+  background-color: none;
+}
+
+/* Aspect styles */
+.aspects {
+  margin-top: 10px;
+}
+
+.aspect {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 4px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: white;
+}
+
+.aspect-positive {
+  background-color: #4CAF50; /* Green */
+}
+
+.aspect-neutral {
+  background-color: #FFC107; /* Yellow */
+}
+
+.aspect-negative {
+  background-color: #F44336; /* Red */
+}
+
+/* Aspect statistics/* Căn nội dung trang sang bên trái */
+.product-detail {
+  padding: 20px;
+  width: 100vw;
+  /* max-width: 800px; */
+  margin: 0 auto;
+}
+
+/* Căn chỉnh tiêu đề và hình ảnh sản phẩm */
+.product-detail h1,
+.product-detail h2 {
+  text-align: left;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.product-detail img {
+  width: 100%;
+  max-width: 300px;
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Khung chứa các comment */
+.comments {
+  width: 90%;
+  margin-top: 20px;
+  max-height: 400px; /* Đặt chiều cao cố định */
+  overflow-y: auto; /* Thêm thanh cuộn dọc nếu cần thiết */
+}
+
+.edit-input {
+  width: calc(100% - 20px) !important; /* Trừ đi padding của comment-box */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  box-sizing: border-box; /* Đảm bảo padding được tính vào chiều rộng */
+}
+
+.comment-box {
+  width: 100%;
+  position: relative;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.comment-box p {
+  margin: 0;
+  font-size: 16px;
+  white-space: pre-wrap;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.comment-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.comment-form button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.comment-form button:hover {
+  background-color: #45a049;
+}
+
+/* CommentHeader.css */
+.comment-header {
+  display: flex;
+  direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button-edit {
+  width: 40px;
+  background-color: #1e90ff;
+  background: #1e90ff;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 0;
+}
+
+.button-edit:hover {
+  color: #010911;
+  text-decoration: underline;
+  background-color: none;
+}
+
+/* Aspect styles */
+.aspects {
+  margin-top: 10px;
+}
+
+.aspect {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 4px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: white;
+}
+
+.aspect-positive {
+  background-color: #4CAF50; /* Green */
+}
+
+.aspect-neutral {
+  background-color: #FFC107; /* Yellow */
+}
+
+.aspect-negative {
+  background-color: #F44336; /* Red */
+}
+
+/* Aspect statistics styles */
+.aspect-stats {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Hiển thị theo cột */
+  gap: 10px;
+}
+
+.aspect-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.aspect-column h3 {
+  margin-bottom: 10px;
+}
+
+.aspect-stats .aspect {
+  display: block;
+  margin-bottom: 10px;
+} styles */
+.aspect-stats {
+  margin-top: 20px;
+}
+
+.aspect-stats .aspect {
+  display: block;
+  margin-bottom: 10px;
+}

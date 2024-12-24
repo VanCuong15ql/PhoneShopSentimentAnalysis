@@ -1,0 +1,45 @@
+/* src/components/ProductList.css */
+
+/* Các kiểu CSS chung cho sản phẩm */
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .product-card {
+    background-color: white;
+    width: 250px; /* Đảm bảo tất cả sản phẩm có cùng chiều rộng */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-5px); /* Di chuyển nhẹ khi hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Đổ bóng đậm hơn khi hover */
+  }
+  
+  .product-card img {
+    width: 100%; /* Chiều rộng của hình ảnh bằng 100% của khung */
+    height: 200px; /* Cố định chiều cao cho hình ảnh */
+    object-fit: cover; /* Giữ tỷ lệ hình ảnh mà không bị biến dạng */
+    border-radius: 8px;
+  }
+  
+  .product-card p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .product-card a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
