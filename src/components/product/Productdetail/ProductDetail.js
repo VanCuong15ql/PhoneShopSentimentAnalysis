@@ -28,12 +28,20 @@ function ProductDetail() {
       username: currentUsername,
       text: comment,
     };
-    await fetch(`http://localhost:5000/products/${id}/comments`, {
+
+    const response = await fetch(`http://localhost:5000/products/${id}/comments`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newComment),
     });
-    setProduct({ ...product, comments: [...product.comments, newComment] });
+
+    const result = await response.json();
+    const updatedComment = {
+      ...newComment,
+      aspects: result.aspects,
+    };
+
+    setProduct({ ...product, comments: [...product.comments, updatedComment] });
     setComment("");
   };
 
@@ -76,7 +84,7 @@ function ProductDetail() {
       product.comments.forEach((comment) => {
         if (comment.aspects) {
           comment.aspects.forEach((aspect) => {
-            const [aspectName, sentiment] = aspect.split('#');
+            const [aspectName, sentiment] = aspect.split(':');
             if (aspectStats[aspectName]) {
               aspectStats[aspectName][sentiment]++;
             }
@@ -87,7 +95,25 @@ function ProductDetail() {
     return aspectStats;
   };
 
+  const calculateAspectPercentages = (aspectStats) => {
+    const aspectPercentages = {};
+    Object.keys(aspectStats).forEach(aspect => {
+      const total = aspectStats[aspect].Positive + aspectStats[aspect].Neutral + aspectStats[aspect].Negative;
+      if (total > 0) {
+        aspectPercentages[aspect] = {
+          Positive: (aspectStats[aspect].Positive / total) * 100,
+          Neutral: (aspectStats[aspect].Neutral / total) * 100,
+          Negative: (aspectStats[aspect].Negative / total) * 100,
+        };
+      } else {
+        aspectPercentages[aspect] = { Positive: 0, Neutral: 0, Negative: 0 };
+      }
+    });
+    return aspectPercentages;
+  };
+
   const aspectStats = calculateAspectStats();
+  const aspectPercentages = calculateAspectPercentages(aspectStats);
 
   if (!product) return <div>Loading...</div>;
 
@@ -99,44 +125,17 @@ function ProductDetail() {
       <div className="comments">
         {product.comments.map((c) => (
           <div key={c._id} className="comment-box">
-            {editingCommentId === c._id ? (
-              <div>
-                <div className="comment-header">
-                  <strong>{c.username}:</strong>
-                  <button className="button-edit" onClick={handleSaveEdit}>
-                    Save
-                  </button>
-                </div>
-                <textarea
-                  className="edit-input"
-                  type="text"
-                  value={editingText}
-                  onChange={(e) => setEditingText(e.target.value)}
-                />
-              </div>
-            ) : (
-              <div>
-                <div className="comment-header">
-                  <strong>{c.username}:</strong>
-                  {c.username === currentUsername && (
-                    <button
-                      className="button-edit"
-                      onClick={() => handleEditComment(c._id)}
-                    >
-                      Edit
-                    </button>
-                  )}
-                </div>
-                <p>{c.text}</p>
-                {c.aspects && (
-                  <div className="aspects">
-                    {c.aspects.map((aspect, index) => (
-                      <span key={index} className={`aspect ${getAspectClass(aspect)}`}>
-                        {aspect}
-                      </span>
-                    ))}
-                  </div>
-                )}
+            <div className="comment-header">
+              <strong>{c.username}:</strong>
+            </div>
+            <p>{c.text}</p>
+            {c.aspects && (
+              <div className="aspects">
+                {c.aspects.map((aspect, index) => (
+                  <span key={index} className={`aspect ${getAspectClass(aspect)}`}>
+                    {aspect}
+                  </span>
+                ))}
               </div>
             )}
           </div>
@@ -156,14 +155,31 @@ function ProductDetail() {
         {allAspects.map((aspect, index) => (
           <div key={index} className="aspect-column">
             <h3>{aspect}</h3>
-            <div className="aspect aspect-positive">
-              Positive: {aspectStats[aspect].Positive}
-            </div>
-            <div className="aspect aspect-neutral">
-              Neutral: {aspectStats[aspect].Neutral}
-            </div>
-            <div className="aspect aspect-negative">
-              Negative: {aspectStats[aspect].Negative}
+            <div className="aspect-bar">
+              {aspectPercentages[aspect].Positive > 0 && (
+                <div
+                  className="aspect-bar-positive"
+                  style={{ width: `${aspectPercentages[aspect].Positive}%` }}
+                >
+                  {aspectStats[aspect].Positive}
+                </div>
+              )}
+              {aspectPercentages[aspect].Neutral > 0 && (
+                <div
+                  className="aspect-bar-neutral"
+                  style={{ width: `${aspectPercentages[aspect].Neutral}%` }}
+                >
+                  {aspectStats[aspect].Neutral}
+                </div>
+              )}
+              {aspectPercentages[aspect].Negative > 0 && (
+                <div
+                  className="aspect-bar-negative"
+                  style={{ width: `${aspectPercentages[aspect].Negative}%` }}
+                >
+                  {aspectStats[aspect].Negative}
+                </div>
+              )}
             </div>
           </div>
         ))}

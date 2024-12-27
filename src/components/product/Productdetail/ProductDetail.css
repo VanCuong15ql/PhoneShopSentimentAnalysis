@@ -306,3 +306,33 @@
   display: block;
   margin-bottom: 10px;
 }
+.aspect-bar {
+  display: flex;
+  height: 20px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+ /* color sentiment */
+ .aspect-bar-positive {
+  background-color: green;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aspect-bar-neutral {
+  background-color: yellow;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aspect-bar-negative {
+  background-color: red;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
